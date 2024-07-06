@@ -1,0 +1,7 @@
+#!/bin/bash
+
+PUPPET_DIR="/opt/puppetlabs/bin/puppet"             # puppet binary
+LOGDEST="--logdest console"                         # for logging output to the console    
+DIFF_ARGS="--diff_args=-uwB"                        # for showing unified diff of changes when applying conf
+
+$PUPPET_DIR agent --test $LOGDEST $DIFF_ARGS "$@"   # $@ passes any args
