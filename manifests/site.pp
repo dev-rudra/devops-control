@@ -1,7 +1,6 @@
 node default {
-  file { '/usr/local/bin/puppetd':
+  file { '/usr/local/bin/puppetd.sh':
     ensure => file,
-    source => 'puppet:///files/puppetd',
     mode   => '0755',
   }
 }
