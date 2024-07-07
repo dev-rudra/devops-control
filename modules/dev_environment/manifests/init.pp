@@ -20,5 +20,14 @@ class dev_environment {
     ensure      => file,
     content     => template('dev_environment/puppetd.sh.erb'),
     mode        => '0755',
+    owner       => 'root',
+    group      => 'root'
+  }
+
+  file { '/usr/bin/puppetd':
+    ensure      => link,
+    target      => '/usr/local/bin/puppetd',
+    owner       => 'root',
+    group       => 'root',
   }
 }
