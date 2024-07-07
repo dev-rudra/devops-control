@@ -1,0 +1,7 @@
+#!/bin/bash
+
+PUPPET_DIR="/opt/puppetlabs/bin/puppet"
+LOGDEST="--logdest console"
+DIFF_ARGS="--diff_args=-uwB"
+
+$PUPPET_DIR agent --test $LOGDEST $DIFF_ARGS "$@"
