@@ -30,4 +30,31 @@ class dev_environment {
     owner       => 'root',
     group       => 'root',
   }
+
+  package { 'ruby':
+    ensure      => installed,
+  }
+
+  package { 'r10k':
+    ensure      => installed,
+    provider    => 'gem',
+    require     => Package['ruby'],
+  }
+
+  file { '/usr/local/bin/g10kd':
+    ensure      => file,
+    content     => template('dev_environment/g10k.sh.erb'),
+    mode        => '0755',
+    owner       => 'root',
+    group       => 'root',
+    require     => Package['r10k'],
+  }
+
+  file { '/usr/bin/g10kd':
+    ensure      => link,
+    target      => '/usr/local/bin/g10kd',
+    owner       => 'root',
+    group       => 'root',
+  }
+
 }
